@@ -1,16 +1,15 @@
 // vite.config.js
-import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 import vue from '@vitejs/plugin-vue'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
-    plugins: [vue(), cssInjectedByJsPlugin()],
+    plugins: [svelte(), vue(), cssInjectedByJsPlugin()],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
+            '@': resolve('src')
         }
     },
     server: {
@@ -28,26 +27,27 @@ export default defineConfig({
         outDir: 'notegpt',
         emptyOutDir: false,
         lib: {
-            entry: resolve(__dirname, 'src', "main.ts"),
+            entry: resolve(__dirname, 'src', 'main.ts'),
             formats: ['cjs'],
-            fileName: 'main',
+            fileName: 'main'
         },
         commonjsOptions: {
-            defaultIsModuleExports: true,
+            defaultIsModuleExports: true
         },
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'src', "main.ts"),
+                main: resolve(__dirname, 'src', 'main.ts')
             },
             output: {
                 name: 'main',
                 format: 'commonjs',
                 esModule: 'if-default-prop',
-                manualChunks: undefined,
+                manualChunks: undefined
             },
-            external: ['siyuan'],
+            external: ['siyuan']
         },
         //构建后是否生成 source map 文件
         sourcemap: false,
-    },
+        minify: false
+    }
 })

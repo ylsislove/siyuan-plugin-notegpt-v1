@@ -1,17 +1,15 @@
 {
-    "extends": "@vue/tsconfig/tsconfig.web.json",
-    "include": ["../siyuan-plugin-notegpt/env.d.ts", "src/**/*", "src/**/*.vue"],
     "compilerOptions": {
-        "baseUrl": ".",
-        "lib": ["ESNext", "DOM"],
+        "module": "commonjs",
+        "target": "es2017",
+        "lib": ["dom", "es2015"],
         "paths": {
             "@/*": ["./src/*"]
         },
-        "ignoreDeprecations": "5.0"
-    },
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
-    ]
+        "types": ["node"],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    }
 }

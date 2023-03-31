@@ -1,15 +1,37 @@
-/* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
-
 module.exports = {
-    root: true,
+    env: {
+        browser: true,
+        node: true
+    },
     extends: [
-        'plugin:vue/vue3-essential',
+        'eslint-config-prettier',
         'eslint:recommended',
-        '@vue/eslint-config-typescript',
-        '@vue/eslint-config-prettier/skip-formatting'
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended'
     ],
     parserOptions: {
-        ecmaVersion: 'latest'
+        ecmaVersion: 'latest',
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module'
+    },
+    overrides: [
+        {
+            files: ['**/*.svelte'],
+            processor: 'svelte3/svelte3'
+        }
+    ],
+    plugins: ['@typescript-eslint', 'svelte3'],
+    rules: {
+        indent: ['error', 4],
+        'linebreak-style': ['error', 'unix'],
+        quotes: [2, 'single'],
+        // semi: ['error', 'always'],
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-inferrable-types': 'off'
+    },
+    settings: {
+        'svelte3/typescript': true
     }
 }
