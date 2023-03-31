@@ -7,6 +7,7 @@
         "dev": "vite",
         "build": "pnpm run type-check && pnpm run build-only",
         "commit": "git add . && git czg",
+        "commit:ai": "git add . && git czg ai -N=3",
         "release": "standard-version && git push --follow-tags origin main",
         "amend": "git add . && git commit --amend --no-edit && git push --force",
         "preview": "vite preview",
