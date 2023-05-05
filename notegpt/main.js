@@ -270,7 +270,7 @@ function create_fragment(ctx) {
   return {
     c() {
       button = element("button");
-      t0 = text("Count: ");
+      t0 = text("hello Count: ");
       t1 = text(
         /*count*/
         ctx[0]
